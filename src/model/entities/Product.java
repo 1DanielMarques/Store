@@ -4,10 +4,10 @@ import model.services.TaxService;
 
 public class Product implements TaxService {
 
+    private static final Double TAX = 0.05;
     private String name;
     private Integer quantity;
     private Double price;
-    private Double totalPrice;
 
     public Product(String name, Integer quantity, Double price) {
         this.name = name;
@@ -41,11 +41,11 @@ public class Product implements TaxService {
 
     @Override
     public double feePayment(int quantity, double price) {
-        return this.price * this.quantity * 0.05;
+        return this.price * this.quantity * TAX;
     }
 
     @Override
     public double totalPrice() {
-        return this.price * this.quantity + this.feePayment(this.quantity, this.price);
+        return getPrice() * getQuantity();
     }
 }
