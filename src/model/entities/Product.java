@@ -1,15 +1,18 @@
 package model.entities;
 
-public class Product {
+import model.services.TaxService;
+
+public class Product implements TaxService {
 
     private String name;
     private Integer quantity;
-    private Double value;
+    private Double price;
+    private Double totalPrice;
 
-    public Product(String name, Integer quantity, Double value) {
+    public Product(String name, Integer quantity, Double price) {
         this.name = name;
         this.quantity = quantity;
-        this.value = value;
+        this.price = price;
     }
 
     public String getName() {
@@ -28,11 +31,21 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public Double getValue() {
-        return value;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setValue(Double value) {
-        this.value = value;
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    @Override
+    public double feePayment(int quantity, double price) {
+        return this.price * this.quantity * 0.05;
+    }
+
+    @Override
+    public double totalPrice() {
+        return this.price * this.quantity + this.feePayment(this.quantity, this.price);
     }
 }
