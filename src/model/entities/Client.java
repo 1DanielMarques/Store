@@ -40,5 +40,4 @@ public class Client {
     public void createOrder(Order order) {
         this.order = order;
     }
-
 }
