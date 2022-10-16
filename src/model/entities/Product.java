@@ -45,4 +45,11 @@ public class Product {
         return priceService.totalPrice(this);
     }
 
+    @Override
+    public String toString() {
+        return "Name: " + getName()
+                + ", Price: $" + getPrice()
+                + ", Quantity: " + this.quantity;
+    }
+
 }
