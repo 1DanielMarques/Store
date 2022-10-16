@@ -45,5 +45,13 @@ public class Order {
         this.orderDataService.data(this);
     }
 
+    public double totalValueOrder() {
+        double sum = 0;
+        for (Product p : products) {
+            sum += p.totalPrice();
+        }
+        return sum;
+    }
+
 
 }
