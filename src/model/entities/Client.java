@@ -1,11 +1,14 @@
 package model.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Client {
 
     private Integer id;
     private String name;
     private String email;
-    private Order order;
+    private List<Order> orderList = new ArrayList<>();
 
     public Client(Integer id, String name, String email) {
         this.id = id;
@@ -33,11 +36,12 @@ public class Client {
         this.email = email;
     }
 
-    public Order getOrder() {
-        return order;
+    public List<Order> getOrderList() {
+        return orderList;
     }
 
-    public void createOrder(Order order) {
-        this.order = order;
+    public void addOrder(Order order) {
+        getOrderList().add(order);
     }
+
 }
