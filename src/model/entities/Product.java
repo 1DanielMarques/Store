@@ -1,8 +1,8 @@
 package model.entities;
 
-import model.services.TaxService;
+import model.services.Price;
 
-public class Product implements TaxService {
+public class Product{
 
     private static final Double TAX = 0.05;
     private String name;
@@ -39,13 +39,4 @@ public class Product implements TaxService {
         this.price = price;
     }
 
-    @Override
-    public double feePayment(int quantity, double price) {
-        return this.price * this.quantity * TAX;
-    }
-
-    @Override
-    public double totalPrice() {
-        return getPrice() * getQuantity();
-    }
 }
