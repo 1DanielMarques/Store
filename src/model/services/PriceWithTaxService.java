@@ -1,6 +1,6 @@
 package model.services;
 
-public class PriceWithTaxes implements Price {
+public class PriceWithTaxService implements PriceService {
 
     private static final double TAX = 0.03;
 
