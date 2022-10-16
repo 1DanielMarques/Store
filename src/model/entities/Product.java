@@ -42,8 +42,7 @@ public class Product {
     }
 
     public Double totalPrice() {
-        double fee = priceService.feePayment(getPrice());
-        return priceService.totalPrice(getPrice() + fee, this.quantity);
+        return priceService.totalPrice(this);
     }
 
 }
