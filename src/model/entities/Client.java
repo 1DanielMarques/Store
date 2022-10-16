@@ -5,19 +5,13 @@ import java.util.List;
 
 public class Client {
 
-    private Integer id;
     private String name;
     private String email;
     private List<Order> orderList = new ArrayList<>();
 
-    public Client(Integer id, String name, String email) {
-        this.id = id;
+    public Client(String name, String email) {
         this.name = name;
         this.email = email;
-    }
-
-    public Integer getId() {
-        return id;
     }
 
     public String getName() {
