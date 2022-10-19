@@ -44,12 +44,12 @@ public class Product {
     public double totalPrice() {
         return priceService.totalPrice(this);
     }
-/*
+
     @Override
     public String toString() {
         return "Name: " + this.name
                 + ", Price: $" + getPrice()
                 + ", Quantity: " + this.quantity;
-    }*/
+    }
 
 }
