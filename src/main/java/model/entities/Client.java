@@ -37,11 +37,11 @@ public class Client {
     public void addOrder(Order order) {
         getOrderList().add(order);
     }
-
+/*
     @Override
     public String toString(){
         return "Name: " + this.name
                 + ", Email: " + this.email;
-    }
+    }*/
 
 }
