@@ -24,7 +24,7 @@ public class Main {
         do {
             Order order = new Order(client, id);
             id++;
-            if (option == 'y') {
+            do {
                 System.out.println("-Product Data-");
                 System.out.print("Name: ");
                 sc.nextLine();
@@ -36,13 +36,15 @@ public class Main {
                 order.addProducts(new Product(productName, quantity, price, new PriceWithTaxService()));
                 System.out.print("Add another product? (y/n): ");
                 option = sc.next().charAt(0);
-            }
+
+            } while (option == 'y');
             client.addOrder(order);
             System.out.print("Another order? (y/n): ");
             option = sc.next().charAt(0);
-
         } while (option == 'y');
-
+        for (Order o : client.getOrderList()) {
+            o.data();
+        }
 
     }
 }

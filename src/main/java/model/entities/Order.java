@@ -47,14 +47,18 @@ public class Order {
         return sum;
     }
 
-    public void data(Order order) {
-        System.out.print("ID: " + order.getId());
-        System.out.println("; Client: " + order.getClient().toString());
-        System.out.println("; Date: " + order.getDateTime().format(fmt));
-        System.out.print("Products: ");
-        for (Product p : order.getProducts()) {
-            System.out.print(p + "; ");
+    public void data() {
+        double sum=0;
+        System.out.println("Client: \n" + client.toString());
+        System.out.println("-Order Data-");
+        System.out.println("Order ID: " + this.id);
+        System.out.println("Date: " + dateTime.format(fmt));
+        System.out.println("-Products Data- ");
+        for (Product p : getProducts()) {
+            System.out.println(p);
+            sum += p.totalPrice();
         }
+        System.out.println("Total: $" + String.format("%.2f",sum));
 
 
     }
