@@ -9,12 +9,12 @@ import java.util.List;
 public class Order {
 
     private Client client;
-    private Integer id;
+    private int id;
     private List<Product> products = new ArrayList<>();
     private LocalDateTime dateTime;
     private OrderDataService orderDataService;
 
-    public Order(Client client, Integer id, OrderDataService orderDataService) {
+    public Order(Client client, int id, OrderDataService orderDataService) {
         this.client = client;
         this.id = id;
         this.dateTime = LocalDateTime.now();
@@ -25,7 +25,7 @@ public class Order {
         return client;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 

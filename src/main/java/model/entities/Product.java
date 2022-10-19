@@ -4,13 +4,13 @@ import model.services.PriceService;
 
 public class Product {
 
-    private static final Double TAX = 0.05;
+    private static final double TAX = 0.05;
     private String name;
-    private Integer quantity;
-    private Double price;
+    private int quantity;
+    private double price;
     private PriceService priceService;
 
-    public Product(String name, Integer quantity, Double price, PriceService priceService) {
+    public Product(String name, int quantity, double price, PriceService priceService) {
         this.name = name;
         this.quantity = quantity;
         this.price = price;
@@ -25,23 +25,23 @@ public class Product {
         this.name = name;
     }
 
-    public Integer getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    public Double getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public Double totalPrice() {
+    public double totalPrice() {
         return priceService.totalPrice(this);
     }
 
