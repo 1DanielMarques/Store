@@ -13,8 +13,9 @@ public class Main {
     public static void main(String[] args) {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
-        int id = 0;
+        int id = 1;
         char option = 'y';
+        double total = 0;
 
         System.out.print("Name: ");
         String name = sc.nextLine();
@@ -42,9 +43,14 @@ public class Main {
             System.out.print("Another order? (y/n): ");
             option = sc.next().charAt(0);
         } while (option == 'y');
+        System.out.println("-Client-");
+        System.out.println(client);
         for (Order o : client.getOrderList()) {
             o.data();
+            total += o.totalValueOrder();
+            System.out.println();
         }
+        System.out.println("Total Orders: $" + String.format("%.2f", total));
 
     }
 }

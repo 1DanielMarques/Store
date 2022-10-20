@@ -49,7 +49,6 @@ public class Order {
 
     public void data() {
         double sum=0;
-        System.out.println("Client: \n" + client.toString());
         System.out.println("-Order Data-");
         System.out.println("Order ID: " + this.id);
         System.out.println("Date: " + dateTime.format(fmt));
