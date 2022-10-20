@@ -1,0 +1,16 @@
+-Client-
+Name: Daniel Marques | Email: danie.marques@edu.unifil.br
+-Order Data-
+ID: 1
+Date: 20/10/2022
+-Products Data- 
+Name: Notebook, Price: $2000.0, Quantity: 2
+Name: Mouse, Price: $50.0, Quantity: 1
+Total: $4171.5
+-Order Data-
+ID: 2
+Date: 20/10/2022
+-Products Data- 
+Name: Keyboard, Price: $80.0, Quantity: 1
+Total: $82.4
+Total Orders: $4253.90

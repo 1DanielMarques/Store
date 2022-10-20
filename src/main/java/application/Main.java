@@ -6,6 +6,9 @@ import model.entities.Product;
 import model.services.PriceService;
 import model.services.PriceWithTaxService;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -15,7 +18,6 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int id = 1;
         char option = 'y';
-        double total = 0;
 
         System.out.print("Name: ");
         String name = sc.nextLine();
@@ -43,14 +45,36 @@ public class Main {
             System.out.print("Another order? (y/n): ");
             option = sc.next().charAt(0);
         } while (option == 'y');
-        System.out.println("-Client-");
-        System.out.println(client);
-        for (Order o : client.getOrderList()) {
-            o.data();
-            total += o.totalValueOrder();
-            System.out.println();
-        }
-        System.out.println("Total Orders: $" + String.format("%.2f", total));
+        registerInFile(client);
 
     }
+
+    public static void registerInFile(Client client) {
+        final String PATH = "C:\\Users\\nohax\\OneDrive\\Área de Trabalho\\Software\\REPOSITORIOS\\Projetos\\Store\\summary\\out.txt";
+        double total = 0;
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(PATH))) {
+            bw.write("-Client-");
+            bw.newLine();
+            bw.write(client.toString());
+            bw.newLine();
+            for (Order o : client.getOrderList()) {
+                bw.write(o.toString());
+                bw.newLine();
+                for (Product p : o.getProducts()) {
+                    bw.write(p.toString());
+                    bw.newLine();
+                }
+                bw.write("Total: $" + o.totalValueOrder());
+                bw.newLine();
+                total += o.totalValueOrder();
+            }
+            bw.write("Total Orders: $" + String.format("%.2f", total));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
 }

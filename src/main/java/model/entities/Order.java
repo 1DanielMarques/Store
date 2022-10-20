@@ -48,7 +48,7 @@ public class Order {
     }
 
     public void data() {
-        double sum=0;
+        double sum = 0;
         System.out.println("-Order Data-");
         System.out.println("Order ID: " + this.id);
         System.out.println("Date: " + dateTime.format(fmt));
@@ -57,9 +57,14 @@ public class Order {
             System.out.println(p);
             sum += p.totalPrice();
         }
-        System.out.println("Total: $" + String.format("%.2f",sum));
+        System.out.println("Total: $" + String.format("%.2f", sum));
+    }
 
-
+    public String toString() {
+        return "-Order Data-" +
+                "\nID: " + this.id
+                + "\nDate: " + dateTime.format(fmt)
+                + "\n-Products Data- ";
     }
 
 }
