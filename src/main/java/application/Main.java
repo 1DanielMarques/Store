@@ -3,21 +3,20 @@ package application;
 import model.entities.Client;
 import model.entities.Order;
 import model.entities.Product;
-import model.services.PriceService;
 import model.services.PriceWithTaxService;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Locale;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
+    public static Scanner sc = new Scanner(System.in);
+    public static char option = 'y';
+
     public static void main(String[] args) {
-        Locale.setDefault(Locale.US);
-        Scanner sc = new Scanner(System.in);
         int id = 1;
-        char option = 'y';
 
         System.out.print("Name: ");
         String name = sc.nextLine();
@@ -28,25 +27,35 @@ public class Main {
             Order order = new Order(client, id);
             id++;
             do {
-                System.out.println("-Product Data-");
-                System.out.print("Name: ");
-                sc.nextLine();
-                String productName = sc.nextLine();
-                System.out.print("Quantity: ");
-                int quantity = sc.nextInt();
-                System.out.print("Price: $");
-                double price = sc.nextDouble();
-                order.addProducts(new Product(productName, quantity, price, new PriceWithTaxService()));
-                System.out.print("Add another product? (y/n): ");
-                option = sc.next().charAt(0);
-
+                try {
+                    productData(order);
+                } catch (InputMismatchException e) {
+                    e.printStackTrace();
+                }
             } while (option == 'y');
             client.addOrder(order);
-            System.out.print("Another order? (y/n): ");
-            option = sc.next().charAt(0);
+            do {
+                System.out.print("Another order? (y/n): ");
+                option = sc.next().charAt(0);
+            } while (option != 'y' && option != 'n');
         } while (option == 'y');
         registerInFile(client);
+    }
 
+    public static void productData(Order order) {
+        System.out.println("-Product Data-");
+        System.out.print("Name: ");
+        sc.nextLine();
+        String productName = sc.nextLine();
+        System.out.print("Quantity: ");
+        int quantity = sc.nextInt();
+        System.out.print("Price: $");
+        double price = sc.nextDouble();
+        order.addProducts(new Product(productName, quantity, price, new PriceWithTaxService()));
+        do {
+            System.out.print("Add another product? (y/n): ");
+            option = sc.next().charAt(0);
+        } while (option != 'y' && option != 'n');
     }
 
     public static void registerInFile(Client client) {
@@ -72,9 +81,5 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
-
-
 }
